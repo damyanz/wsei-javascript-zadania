@@ -50,21 +50,57 @@ for (let i = 0; i <= 100; i++) {
   else console.log(i);
 }
 
-//Zadanie 8:
-//a):
+// Zadanie 8:
+
+// a)
+
 for (let i = 1; i <= 5; i++) {
-  let row = "";
-  for (let j = 1; j <= i; j++) {
-    row += "*";
-  }
-  console.log(row);
+  console.log("*".repeat(i));
 }
 
-//b):
+// b)
+
+let counter = 4;
+
 for (let i = 1; i <= 5; i++) {
-  let row = "";
-  for (let j = 1; j <= i; j++) {
-    row += "";
+  console.log(" ".repeat(counter) + "* ".repeat(i));
+  counter--;
+}
+
+// c)
+
+let counter = 4;
+
+for (let i = 1; i <= 10; i++) {
+  if (i % 2 !== 0) {
+    console.log(" ".repeat(counter2) + "*".repeat(i) + " ".repeat(counter2));
+    counter2--;
   }
-  console.log(row);
+}
+
+// d)
+
+let string = "*1234";
+
+for (let i = 0; i <= 12; i++) {
+  if (i === 6) {
+    console.log("-----");
+  } else if (i < 6) {
+    console.log("*".repeat(i) + string.slice(i));
+  } else {
+    console.log("*".repeat(12 - i) + string.slice(12 - j));
+  }
+}
+
+// e)
+
+let counter = 4;
+
+for (let i = 1; i <= 8; i++) {
+  if (i <= 5) {
+    console.log(" ".repeat(counter3) + "* ".repeat(i));
+    counter3--;
+  } else {
+    console.log("    *");
+  }
 }
