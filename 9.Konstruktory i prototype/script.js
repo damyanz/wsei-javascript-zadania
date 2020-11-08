@@ -1,11 +1,11 @@
 //Zadanie 1:
-function Calc(firstName, lastName, age, country, city, language) {
-  this.firstName = firstName
-  this.lastName = lastName
-  this.age = age
-  this.country = country
-  this.city = city
-  this.language = language
+function Person(firstName, lastName, age, country, city, language) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.age = age;
+  this.country = country;
+  this.city = city;
+  this.language = language;
 
   this.setAge = function (value) {
     this.age = value;
@@ -34,42 +34,55 @@ people.forEach((person) => {
   console.log(person);
 });
 
-
 //Zadanie 2:
-Array.map
 function Calc() {
-  this.history = function () {
-    this.stack: []
-    push: (operation, arguments, result) => {
-      this.stack = [{ operation, arguments, result }, ...this.stack]
-    },
-      clear: () => {
-        this.stack = [];
-      },
-        show: () => console.log(this.stack)
-  }
-  this.add = (...args) => {
-    const result = [...args].reduce((acc, val) => acc + val);
-    this.history.push("add", [...args], result)
-    console.log(result)
-  }
-}
-class Calc {
-  constructor(...args) {
-    this.historyStack = []
-    this.arguments = [...args]
-  }
-
-  [].map()
-  showHistory() {
-    console.log(this.historyStack)
-  }
-  clearHistory() {
-    this.historyStack = [];
-  }
-  saveInHistory() {
-    this.historyStack = [, ...this.historyStack]
-  }
+  this.memory = [];
+  this.result = 0;
 }
 
+Calc.prototype = {
+  operation: function (a, b, op) {
+    switch (op) {
+      case "+":
+        this.result = a + b;
+        break;
+      case "-":
+        this.result = a - b;
+        break;
+      case "*":
+        this.result = a * b;
+        break;
+      case "/":
+        this.result = a / b;
+        break;
+    }
+    const concatOperation = a + op + b + "=" + this.result;
+    this.memory.push(concatOperation);
+  },
+  showMem: function () {
+    return this.memory;
+  },
+  wipeMem: function () {
+    return (this.memory = []);
+  },
+};
 
+const calculator = new Calc();
+const Calculator2 = new Calc();
+calculator.operation(12, 3, "+");
+calculator.operation(64, 16, "-");
+calculator.operation(12, 2, "*");
+calculator.operation(40, 10, "/");
+console.log(calculator.showMem());
+
+calculator2.operation(16, 5, "+");
+calculator2.operation(123, 23, "-");
+calculator2.operation(10, 13, "*");
+calculator2.operation(120, 19, "/");
+console.log(calculator2.showMem());
+
+calculator.wipeMem();
+calculator2.wipeMem();
+
+console.log(calculator.showMem());
+console.log(calculator2.showMem());
